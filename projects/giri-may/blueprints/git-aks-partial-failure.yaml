@@ -1,0 +1,22 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Blueprint
+metadata:
+  name: git-aks-partial-failure
+  project: giri-may
+spec:
+  base:
+    name: minimal
+    version: 2.7.0
+  componentsCriticality:
+  - name: xwing-fail
+  customAddons:
+  - name: xwing-fail
+    version: v1
+  - name: redis-catalog
+    version: redis-v1
+  defaultAddons:
+    enableIngress: true
+  driftWebhook:
+    enabled: true
+  type: custom
+  version: v2
