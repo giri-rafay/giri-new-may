@@ -5,7 +5,7 @@ metadata:
   project: giri-may
 spec:
   base:
-    name: default-openshift
+    name: default-upstream
     version: 2.7.0
   componentsCriticality:
   - name: xwing-fail
@@ -17,15 +17,11 @@ spec:
   defaultAddons:
     enableIngress: true
     enableMonitoring: true
-    monitoring:
-      metricsServer:
-        customizationEnabled: true
-      prometheusAdapter:
-        customizationEnabled: true
+    enableRookCeph: true
   driftWebhook:
     enabled: true
   namespaceConfig:
     enableSync: true
     syncType: Managed
   type: custom
-  version: openshift
+  version: upstream
