@@ -1,0 +1,21 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Blueprint
+metadata:
+  name: jun3
+  project: giri-may
+spec:
+  base:
+    name: minimal
+    version: 2.7.0
+  defaultAddons:
+    enableIngress: true
+  drift:
+    action: Deny
+    enabled: true
+  driftWebhook:
+    enabled: true
+  namespaceConfig:
+    enableSync: true
+    syncType: Unmanaged
+  type: custom
+  version: v0

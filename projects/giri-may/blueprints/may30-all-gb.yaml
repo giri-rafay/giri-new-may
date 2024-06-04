@@ -1,0 +1,60 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Blueprint
+metadata:
+  name: may30-all-gb
+  project: giri-may
+spec:
+  base:
+    name: default-aks
+    version: 2.7.0
+  componentsCriticality:
+  - name: xwing-fail
+  - name: redis-catalog
+  - name: rabbitmq
+  - name: opa-policy
+  - name: network-policy
+  - name: cost-profile
+  costProfile:
+    name: default-cost-profile-azure
+    version: version-1716753356
+  customAddons:
+  - name: xwing-fail
+    version: v1
+  - name: redis-catalog
+    version: redis-v1
+  - name: rabbitmq
+    version: rabbitmq-v1
+  - dependsOn:
+    - xwing-fail
+    name: nginx-addon
+    version: nginx-v1
+  - name: mongo
+    version: mongo-v1
+  - name: minio
+    version: minio-v1
+  defaultAddons:
+    enableIngress: true
+    enableMonitoring: true
+    monitoring:
+      metricsServer:
+        customizationEnabled: true
+      prometheusAdapter:
+        customizationEnabled: true
+  drift:
+    action: Deny
+    enabled: true
+  driftWebhook:
+    enabled: true
+  namespaceConfig:
+    enableSync: true
+    syncType: Unmanaged
+  networkPolicy:
+    profile:
+      name: default
+      version: latest
+  opaPolicy:
+    profile:
+      name: default
+      version: latest
+  type: golden
+  version: v2

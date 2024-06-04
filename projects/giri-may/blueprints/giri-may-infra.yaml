@@ -1,0 +1,50 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Blueprint
+metadata:
+  name: giri-may-infra
+  project: giri-may
+spec:
+  base:
+    name: default-aks
+    version: 2.7.0
+  componentsCriticality:
+  - name: redis-catalog
+  - name: certmanager
+  - name: consul
+  customAddons:
+  - name: xwing-fail
+    version: v1
+  - dependsOn:
+    - nginx-addon
+    name: redis-catalog
+    version: redis-v1
+  - name: nginx-addon
+    version: nginx-v1
+  - name: rabbitmq
+    version: rabbitmq-v1
+  - name: mongo
+    version: mongo-v1
+  - name: minio
+    version: minio-v1
+  - name: jupyter
+    version: jupyter-v1
+  - name: jenkins
+    version: jenkins-v1
+  - name: consul
+    version: consul-v1
+  - name: certmanager
+    version: version1
+  - name: cassandra
+    version: cas-v1
+  defaultAddons:
+    enableIngress: true
+    enableMonitoring: true
+    monitoring:
+      metricsServer:
+        customizationEnabled: true
+      prometheusAdapter:
+        customizationEnabled: true
+  driftWebhook:
+    enabled: true
+  type: custom
+  version: v4

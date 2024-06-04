@@ -1,0 +1,18 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Blueprint
+metadata:
+  name: ns-sync1
+  project: giri-may
+spec:
+  base:
+    name: minimal
+    version: 2.7.0
+  defaultAddons:
+    enableIngress: true
+  driftWebhook:
+    enabled: true
+  namespaceConfig:
+    enableSync: true
+    syncType: Managed
+  type: custom
+  version: v2

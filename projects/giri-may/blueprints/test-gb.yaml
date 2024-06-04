@@ -1,0 +1,37 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Blueprint
+metadata:
+  name: test-gb
+  project: giri-may
+spec:
+  base:
+    name: default-aks
+    version: 2.7.0
+  componentsCriticality:
+  - name: xwing-fail
+  customAddons:
+  - name: xwing-fail
+    version: v1
+  defaultAddons:
+    enableIngress: true
+    enableMonitoring: true
+    monitoring:
+      metricsServer:
+        customizationEnabled: true
+      prometheusAdapter:
+        customizationEnabled: true
+  driftWebhook:
+    enabled: true
+  opaPolicy:
+    opaPolicy:
+    - name: policy-privileged
+      version: version-1716753356
+    profile:
+      name: default
+      version: latest
+  sharing:
+    enabled: true
+    projects:
+    - name: '*'
+  type: golden
+  version: test-gb-v4

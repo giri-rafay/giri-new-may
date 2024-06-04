@@ -1,0 +1,36 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Blueprint
+metadata:
+  name: may30-all-cb
+  project: giri-may
+spec:
+  base:
+    name: may30-all-gb
+    version: v2
+  componentsCriticality:
+  - name: consul
+  customAddons:
+  - name: consul
+    version: consul-v1
+  defaultAddons:
+    enableIngress: true
+    enableMonitoring: true
+    monitoring:
+      metricsServer:
+        customizationEnabled: true
+      prometheusAdapter:
+        customizationEnabled: true
+  drift:
+    action: Deny
+    enabled: true
+  driftWebhook:
+    enabled: true
+  namespaceConfig:
+    enableSync: true
+    syncType: Unmanaged
+  networkPolicy:
+    policies:
+    - name: ccnp1
+      version: v1
+  type: custom
+  version: v1-cb

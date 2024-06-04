@@ -1,0 +1,28 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Blueprint
+metadata:
+  name: test-bp
+  project: giri-may
+spec:
+  base:
+    name: default-aks
+    version: 2.7.0
+  componentsCriticality:
+  - name: redis-catalog
+  customAddons:
+  - name: redis-catalog
+    version: redis-v1
+  - name: nginx-addon
+    version: nginx-v1
+  defaultAddons:
+    enableIngress: true
+    enableMonitoring: true
+    monitoring:
+      metricsServer:
+        customizationEnabled: true
+      prometheusAdapter:
+        customizationEnabled: true
+  driftWebhook:
+    enabled: true
+  type: custom
+  version: after-upgrade

@@ -1,0 +1,25 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Blueprint
+metadata:
+  name: np-gb
+  project: giri-may
+spec:
+  base:
+    name: default
+    version: 2.7.0
+  componentsCriticality:
+  - name: network-policy
+  defaultAddons:
+    enableIngress: true
+    enableMonitoring: true
+  driftWebhook:
+    enabled: true
+  namespaceConfig:
+    enableSync: true
+    syncType: Managed
+  networkPolicy:
+    profile:
+      name: default
+      version: latest
+  type: golden
+  version: version1

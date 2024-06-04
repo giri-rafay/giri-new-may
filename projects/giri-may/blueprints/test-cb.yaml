@@ -1,0 +1,24 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Blueprint
+metadata:
+  name: test-cb
+  project: giri-may
+spec:
+  base:
+    name: test-gb
+    version: test-gb-v4
+  customAddons:
+  - name: redis-catalog
+    version: redis-v1
+  defaultAddons:
+    enableIngress: true
+    enableMonitoring: true
+    monitoring:
+      metricsServer:
+        customizationEnabled: true
+      prometheusAdapter:
+        customizationEnabled: true
+  driftWebhook:
+    enabled: true
+  type: custom
+  version: test-vb-v2

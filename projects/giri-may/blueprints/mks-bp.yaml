@@ -1,0 +1,26 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Blueprint
+metadata:
+  name: mks-bp
+  project: giri-may
+spec:
+  base:
+    name: minimal
+    version: 2.7.0
+  componentsCriticality:
+  - name: xwing-fail
+  customAddons:
+  - name: xwing-fail
+    version: v1
+  - dependsOn:
+    - xwing-fail
+    name: redis-catalog
+    version: redis-v1
+  - name: certmanager
+    version: version1
+  defaultAddons:
+    enableIngress: true
+  driftWebhook:
+    enabled: true
+  type: custom
+  version: v2
