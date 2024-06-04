@@ -4,6 +4,23 @@ metadata:
   name: default-cb
   project: giri-may
 spec:
+  base:
+    name: default
+    version: 2.7.0
+  componentsCriticality:
+  - name: xwing-fail
+  customAddons:
+  - name: xwing-fail
+    version: v1
+  - name: redis-catalog
+    version: redis-v1
+  defaultAddons:
+    enableIngress: true
+    enableMonitoring: true
   driftWebhook:
     enabled: true
+  namespaceConfig:
+    enableSync: true
+    syncType: Managed
   type: custom
+  version: v1
