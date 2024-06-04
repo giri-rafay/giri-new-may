@@ -4,6 +4,19 @@ metadata:
   name: bp-v1
   project: giri-may
 spec:
+  base:
+    name: minimal
+    version: 2.7.0
+  componentsCriticality:
+  - name: redis-catalog
+  customAddons:
+  - name: xwing-fail
+    version: v1
+  - name: redis-catalog
+    version: redis-v1
+  defaultAddons:
+    enableIngress: true
   driftWebhook:
     enabled: true
   type: custom
+  version: version1
