@@ -18,12 +18,10 @@ spec:
     version: redis-v1
   - name: xwing-fail
     version: v1
-  - name: nginx-addon
-    version: nginx-v1
   defaultAddons:
     enableIngress: true
     enableMonitoring: true
   driftWebhook:
     enabled: true
   type: custom
-  version: v7
+  version: v8
