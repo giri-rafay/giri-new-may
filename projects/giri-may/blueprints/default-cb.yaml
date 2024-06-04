@@ -5,23 +5,27 @@ metadata:
   project: giri-may
 spec:
   base:
-    name: default-upstream
+    name: minimal
     version: 2.7.0
   componentsCriticality:
   - name: xwing-fail
+  - name: opa-policy
   customAddons:
   - name: xwing-fail
     version: v1
-  - name: redis-catalog
-    version: redis-v1
   defaultAddons:
     enableIngress: true
-    enableMonitoring: true
-    enableRookCeph: true
   driftWebhook:
     enabled: true
   namespaceConfig:
     enableSync: true
     syncType: Managed
+  opaPolicy:
+    opaPolicy:
+    - name: requiredlabels
+      version: v1
+    profile:
+      name: new
+      version: v1
   type: custom
-  version: upstream
+  version: opa-label
