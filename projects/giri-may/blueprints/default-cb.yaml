@@ -5,7 +5,7 @@ metadata:
   project: giri-may
 spec:
   base:
-    name: default-gke
+    name: default-openshift
     version: 2.7.0
   componentsCriticality:
   - name: xwing-fail
@@ -20,10 +20,12 @@ spec:
     monitoring:
       metricsServer:
         customizationEnabled: true
+      prometheusAdapter:
+        customizationEnabled: true
   driftWebhook:
     enabled: true
   namespaceConfig:
     enableSync: true
     syncType: Managed
   type: custom
-  version: default-gke
+  version: openshift
