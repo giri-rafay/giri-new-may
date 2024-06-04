@@ -7,10 +7,25 @@ spec:
   base:
     name: default
     version: 2.7.0
+  componentsCriticality:
+  - name: xwing-fail
+  - name: rabbitmq
+  - name: nginx-addon
+  customAddons:
+  - name: xwing-fail
+    version: v1
+  - name: rabbitmq
+    version: rabbitmq-v1
+  - name: nginx-addon
+    version: nginx-v1
+  - name: redis-catalog
+    version: redis-v1
+  - name: minio
+    version: minio-v1
   defaultAddons:
     enableIngress: true
     enableMonitoring: true
   driftWebhook:
     enabled: true
   type: custom
-  version: v10
+  version: v11
