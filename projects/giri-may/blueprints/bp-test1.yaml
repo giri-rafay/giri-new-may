@@ -10,7 +10,6 @@ spec:
   componentsCriticality:
   - name: xwing-fail
   - name: rabbitmq
-  - name: nginx-addon
   customAddons:
   - name: xwing-fail
     version: v1
@@ -28,4 +27,4 @@ spec:
   driftWebhook:
     enabled: true
   type: custom
-  version: v11
+  version: v12
