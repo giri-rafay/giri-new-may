@@ -7,20 +7,10 @@ spec:
   base:
     name: default
     version: 2.7.0
-  componentsCriticality:
-  - name: xwing-fail
-  - name: redis-catalog
-  customAddons:
-  - name: rabbitmq
-    version: rabbitmq-v1
-  - name: redis-catalog
-    version: redis-v1
-  - name: xwing-fail
-    version: v1
   defaultAddons:
     enableIngress: true
     enableMonitoring: true
   driftWebhook:
     enabled: true
   type: custom
-  version: v9
+  version: v10
