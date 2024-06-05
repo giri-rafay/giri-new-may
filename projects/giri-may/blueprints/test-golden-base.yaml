@@ -4,6 +4,44 @@ metadata:
   name: test-golden-base
   project: giri-may
 spec:
+  base:
+    name: default
+    version: 2.7.0
+  componentsCriticality:
+  - name: xwing-fail
+  - name: rabbitmq
+  - name: openebs-localpv
+  - name: v2-alertmanager
+  - name: rafay-prometheus
+  - name: opa-policy
+  - name: network-policy
+  - name: cost-profile
+  costProfile:
+    name: test-do
+    version: v1
+  customAddons:
+  - name: xwing-fail
+    version: v1
+  - name: rabbitmq
+    version: rabbitmq-v1
+  defaultAddons:
+    enableIngress: true
+    enableMonitoring: true
   driftWebhook:
     enabled: true
+  networkPolicy:
+    policies:
+    - name: new
+      version: v1
+    profile:
+      name: default
+      version: latest
+  opaPolicy:
+    opaPolicy:
+    - name: requiredlabels
+      version: v1
+    profile:
+      name: default
+      version: latest
   type: golden
+  version: version-1
